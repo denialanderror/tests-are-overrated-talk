@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/tests-are-overrated-talk/static/js/main.c5da16c0.js",
+    "static/media/king-dino.png": "/tests-are-overrated-talk/static/media/king-dino.015c4c6044e7346dc1fe.png",
+    "static/media/superhero.png": "/tests-are-overrated-talk/static/media/superhero.5546f8add5d092d03132.png",
+    "static/media/meetup.png": "/tests-are-overrated-talk/static/media/meetup.2bf458316c04c7620329.png",
+    "static/media/manga.png": "/tests-are-overrated-talk/static/media/manga.5364d1bb2004e7a2d82b.png",
+    "static/media/dilbert3.png": "/tests-are-overrated-talk/static/media/dilbert3.aa205aa6764b96f33a3a.png",
+    "static/media/dilbert4.png": "/tests-are-overrated-talk/static/media/dilbert4.031fcfe4ab615c3b53a8.png",
+    "static/media/dilbert1.png": "/tests-are-overrated-talk/static/media/dilbert1.9898721bf0d666fe91bf.png",
+    "static/media/dilbert2.png": "/tests-are-overrated-talk/static/media/dilbert2.f1c23ed905b79105a4a4.png",
+    "static/media/quotes.svg": "/tests-are-overrated-talk/static/media/quotes.db1045355ada35377987f2315524bc3d.svg",
+    "index.html": "/tests-are-overrated-talk/index.html",
+    "main.c5da16c0.js.map": "/tests-are-overrated-talk/static/js/main.c5da16c0.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c5da16c0.js"
+  ]
+}
