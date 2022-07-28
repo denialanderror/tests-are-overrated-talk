@@ -3,8 +3,6 @@ import {
   FlexBox,
   Heading,
   UnorderedList,
-  CodeSpan,
-  OrderedList,
   ListItem,
   FullScreen,
   AnimatedProgress,
@@ -12,186 +10,12 @@ import {
   Slide,
   Deck,
   Text,
-  Grid,
   Box,
-  Image,
-  CodePane,
-  MarkdownSlide,
-  MarkdownSlideSet,
   Notes,
-  SlideLayout,
   Link,
 } from "spectacle";
-
-const SlideFragments = () => (
-  <>
-    <Slide>
-      <Text>This is a slide fragment.</Text>
-    </Slide>
-    <Slide>
-      <Text>This is also a slide fragment.</Text>
-      <Appear>
-        <Text>This item shows up!</Text>
-      </Appear>
-      <Appear>
-        <Text>This item also shows up!</Text>
-      </Appear>
-    </Slide>
-  </>
-);
-
-const demo = () => (
-  <Deck>
-    <Slide>
-      <FlexBox height="100%" flexDirection="column">
-        <Heading margin="0px" fontSize="150px">
-          ✨<i>Spectacle</i> ✨
-        </Heading>
-        <Heading margin="0px" fontSize="h2">
-          A ReactJS Presentation Library
-        </Heading>
-        <Heading margin="0px 32px" color="primary" fontSize="h3">
-          Where you can write your decks in JSX, Markdown, or MDX!
-        </Heading>
-      </FlexBox>
-    </Slide>
-    <Slide
-      transition={{
-        from: {
-          transform: "scale(0.5) rotate(45deg)",
-          opacity: 0,
-        },
-        enter: {
-          transform: "scale(1) rotate(0)",
-          opacity: 1,
-        },
-        leave: {
-          transform: "scale(0.2) rotate(315deg)",
-          opacity: 0,
-        },
-      }}
-      backgroundColor="tertiary"
-      backgroundImage="url(https://github.com/FormidableLabs/dogs/blob/main/src/beau.jpg?raw=true)"
-      backgroundOpacity={0.5}
-    >
-      <Heading>Custom Backgrounds</Heading>
-      <UnorderedList>
-        <ListItem>
-          <CodeSpan>backgroundColor</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundImage</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundOpacity</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundSize</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundPosition</CodeSpan>
-        </ListItem>
-        <ListItem>
-          <CodeSpan>backgroundRepeat</CodeSpan>
-        </ListItem>
-      </UnorderedList>
-    </Slide>
-    <Slide>
-      <Heading>Animated Elements</Heading>
-      <OrderedList>
-        <Appear>
-          <ListItem>Elements can animate in!</ListItem>
-        </Appear>
-        <Appear>
-          <ListItem>Out of order</ListItem>
-        </Appear>
-        <Appear priority={0}>
-          <ListItem>
-            Just identify the order with the prop <CodeSpan>priority</CodeSpan>!
-          </ListItem>
-        </Appear>
-      </OrderedList>
-    </Slide>
-    <SlideFragments />
-    <Slide>
-      <CodePane language="jsx">{`
-        import { createClient, Provider } from 'urql';
-        const client = createClient({ url: 'https://0ufyz.sse.codesandbox.io' });
-        const App = () => (
-          <Provider value={client}>
-            <Todos />
-          </Provider>
-        );
-        `}</CodePane>
-      <Box height={20} />
-      <CodePane language="java" showLineNumbers={false}>{`
-        public class NoLineNumbers {
-          public static void main(String[] args) {
-            System.out.println("Hello");
-          }
-        }
-        `}</CodePane>
-    </Slide>
-    <div>
-      <Slide>
-        <Heading>This is a slide embedded in a div</Heading>
-      </Slide>
-    </div>
-    <MarkdownSlide componentProps={{ color: "yellow" }}>
-      {`
-        # This is a Markdown Slide
-        - You can pass props down to all elements on the slide.
-        - Just use the \`componentProps\` prop.
-        `}
-    </MarkdownSlide>
-    <MarkdownSlide animateListItems>
-      {`
-       # This is also a Markdown Slide
-       It uses the \`animateListItems\` prop.
-       - Its list items...
-       - ...will appear...
-       - ...one at a time.
-      `}
-    </MarkdownSlide>
-    <Slide>
-      <Grid
-        gridTemplateColumns="50% 50%"
-        gridTemplateRows="50% 50%"
-        height="100%"
-      >
-        <FlexBox alignItems="center" justifyContent="center">
-          <Heading>This is a 4x4 Grid</Heading>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Text textAlign="center">
-            With all the content aligned and justified center.
-          </Text>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Text textAlign="center">
-            It uses Spectacle <CodeSpan>{"<Grid />"}</CodeSpan> and{" "}
-            <CodeSpan>{"<FlexBox />"}</CodeSpan> components.
-          </Text>
-        </FlexBox>
-        <FlexBox alignItems="center" justifyContent="center">
-          <Box width={200} height={200} backgroundColor="secondary" />
-        </FlexBox>
-      </Grid>
-    </Slide>
-    <MarkdownSlideSet>
-      {`
-        # This is the first slide of a Markdown Slide Set
-        ---
-        # This is the second slide of a Markdown Slide Set
-        `}
-    </MarkdownSlideSet>
-    <SlideLayout.List
-      title="Slide layouts!"
-      items={["Two-column", "Lists", "And more!"]}
-      animateListItems
-    />
-  </Deck>
-);
+import { OversizedQuote } from "./quotes";
+import github from "./GitHub-Mark.png";
 
 const theme = {
   fonts: {
@@ -239,44 +63,59 @@ const TitlePage = () => (
 );
 
 const TestAnnoyances = () => (
-  <Slide>
-    <Heading>Who has ever done this?</Heading>
-    <UnorderedList animateListItems>
-      <ListItem>
-        Spent an hour writing a feature, and spent the rest of the day writing
-        the tests
-      </ListItem>
-      <ListItem>
-        Had to re-run a failed build in CI because of flakey tests
-      </ListItem>
-      <ListItem>
-        Spent hours of busy work writing code just to hit some arbitrary
-        coverage metric
-      </ListItem>
-      <ListItem>
-        Had bugs creep in despite 100% coverage because tests weren't testing
-        what they said they would
-      </ListItem>
-    </UnorderedList>
-    <Notes>
-      Be honest with me: Who here hasn't found tests and testing irritating on
-      occasion?
-      <ul>
-        <li>
-          Who here can think of a time where they have spent an hour coding up a
-          feature and then spent the rest of the day writing tests for it?
-        </li>
-        <li>
-          Or who has had issues with flakey tests eating up development time?
-        </li>
-        <li>or poorly written tests passing when they shouldn't?</li>
-        <li>
-          Wouldn't the world be a better place if test coverage metrics didn't
-          exist?
-        </li>
-      </ul>
-    </Notes>
-  </Slide>
+  <>
+    <Slide>
+      <Appear>
+        <Heading>
+          <OversizedQuote>
+            I spent an hour making this feature work and a whole day fixing the
+            tests
+          </OversizedQuote>
+        </Heading>
+      </Appear>
+      <Notes>
+        Be honest with me: Who here hasn't found tests and testing irritating on
+        occasion?
+        <ul>
+          <li>
+            Who here can think of a time where they have spent an hour coding up
+            a feature and then spent the rest of the day writing tests for it?
+          </li>
+          <li>
+            Or who has had issues with flakey tests eating up development time?
+          </li>
+          <li>or poorly written tests passing when they shouldn't?</li>
+          <li>
+            Wouldn't the world be a better place if test coverage metrics didn't
+            exist?
+          </li>
+        </ul>
+      </Notes>
+    </Slide>
+    <Slide>
+      <Heading>
+        <OversizedQuote>
+          It's taken three attempts to get this through CI because of someone
+          else's flakey tests
+        </OversizedQuote>
+      </Heading>
+    </Slide>
+    <Slide>
+      <Heading>
+        <OversizedQuote>
+          I can't help right now, I have to write a load of useless unit tests
+          to hit the code coverage metric
+        </OversizedQuote>
+      </Heading>
+    </Slide>
+    <Slide>
+      <Heading>
+        <OversizedQuote>
+          It can't possibly be a bug, all our tests are passing!
+        </OversizedQuote>
+      </Heading>
+    </Slide>
+  </>
 );
 
 const WhyTest = () => (
@@ -436,7 +275,11 @@ const Thanks = () => (
         </Link>
       </ListItem>
     </UnorderedList>
-    <Text>You can find these slides on my Github: @denialanderror</Text>
+    <Text>
+      You can find these slides on my Github:{" "}
+      <img src={github} alt="github" style={{ paddingRight: "5px" }} />
+      denialanderror
+    </Text>
     <Notes>
       Thanks for listening! This slide deck is pinned to my Github so feel free
       to take a look. I don't do Twitter, so if you have any comments - positive
