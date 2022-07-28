@@ -23,6 +23,9 @@ import dilbert1 from "./images/dilbert1.png";
 import dilbert2 from "./images/dilbert2.png";
 import dilbert3 from "./images/dilbert3.png";
 import dilbert4 from "./images/dilbert4.png";
+import manga from "./images/manga.png";
+import superhero from "./images/superhero.png";
+import kingDino from "./images/king-dino.png";
 
 const theme = {
   fonts: {
@@ -68,9 +71,10 @@ const TitlePage = () => (
 const TestAnnoyances = () => (
   <>
     <Slide>
+      <Heading>Why do you hate tests so much?</Heading>
       <Notes>
         <p>
-          So what's my problem with tests? I write them, I practice TDD when I can, I rely on them every day to provide the confidence to release changes to production. But I don't have to like them! Be honest with me, how many of these quotes ring true for you?
+          So what's my problem with tests? I write them, I practice TDD when I can, I rely on them every day to provide the confidence to release changes to production. But I that doesn't mean I have to like them, and I'd guess that most of you have felt this way before also! Be honest with me, how many of these quotes ring true for you?
         </p>
         <p>
           By the way, the following pictures were generated with the prompt "software developer angry at their build pipeline, in the style of Dilbert"
@@ -104,133 +108,188 @@ const TestAnnoyances = () => (
   </>
 );
 
-const WhyTest = () => (
-  <Slide>
-    <Heading>Why write Tests</Heading>
-    <Notes>
-      TODO:
-      <p>
-        The naive assumption is to check the validity of our workings. Let's say
-        we are writing a calculator application... But if we are only testing to
-        ensure our code meets requirements, why bother checking in the tests
-        with the production code?
-      </p>
-      <p>
-        Okay, well tests aren't there to test for validity _now_, they are there
-        to test for validity whenever you make a change again in the future.
-        !!WHY IS THIS NOT GOOD ASSUMPTION!!
-      </p>
-      <p>
-        For documentation. A great way to learn about a new codebase is by
-        reading through the test suite. But tests are much like any other
-        documentation: They are often only written once, and rarely deleted. A
-        test suite can suffer from the same problems as comments in code.
-      </p>
-    </Notes>
-  </Slide>
-);
-
 const TestsAreImportant = () => (
   <Slide>
     <Heading>Tests are important!</Heading>
+    <Grid
+      gridTemplateColumns="50% 50%"
+      height="100%"
+    >
+      <FlexBox alignItems="center" justifyContent="center">
+        <UnorderedList>
+          <Appear>
+            <ListItem>
+              Continuous Delivery
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              Test-Driven Development
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              Refactoring
+            </ListItem>
+          </Appear>
+          <Appear>
+            <ListItem>
+              Documentation
+            </ListItem>
+          </Appear>
+        </UnorderedList>
+      </FlexBox>
+      <FlexBox alignItems="center" justifyContent="center">
+        <Image src={manga} width="80%" style={{ objectFit: "cover" }} />
+      </FlexBox>
+    </Grid>
     <Notes>
       <p>
-        But tests _are_ important! Tests are vitally important in modern, Agile
-        software development. Without tests to catch regressions, Continuous
-        Delivery would not be possible, and working on a team that over the past
-        year has moved from fortnightly releases to double figure releases
-        daily, CD has been a huge improvement for the product, the users, and
-        the developer experience. Without tests, Test-Driven Development would
-        not be possible, and TDD produces objectively higher-quality code.
+        But tests _are_ vitally important in modern, Agile
+        software development!
       </p>
       <p>
-        I'll admit then that there's a fair bit of hyperbole in my talk title.
+        Without tests to catch regressions, Continuous
+        Delivery would not be possible, and having worked on a team that over the past
+        year has moved from fortnightly releases to double figure releases
+        daily, CD has been a huge improvement for the product, the users, and
+        the developer experience.
+      </p>
+      <p>
+        Without tests, Test-Driven Development would not be possible,
+        and TDD produces objectively higher-quality code.
+      </p>
+      <p>
+        Without tests to give us the confidence to make changes, it is often too risky to refactor code. As the great Michael C. Feathers said in Working Effectively with Legacy Code, "legacy code is simply code without tests"
+      </p>
+      <p>
+        Lastly, tests often provide useful documentation and starting by reading the tests is often a good approach to becoming getting to grips with unfamiliar codebases.
+      </p>
+      <p>
+        This image by the way is titled "The most important test in the world, manga style"
       </p>
     </Notes>
   </Slide>
 );
 
 const HowToThink = () => (
-  <Slide>
-    <Heading>Alternatives</Heading>
-    <Notes>
-      <p>
-        So why have this title in the first place? Well, there's a few reasons:
-      </p>
-      <p>
-        *Tests should be useful, and most are not.* If your unit test mocks out
-        all external dependencies (as unit tests tend to), there is very little
-        reason to keep them around once you've finished refactoring. If the
-        interface of your unit changes, all of your unit tests will need
-        changing also. We have a mindset drilled into us as software developers
-        that deleting tests is a "bad thing" but I'd argue that a significant
-        portion of product's CI pipeline is effectively dead code.!!Use Kent C
-        Dodds inverted pyramid example!!
-      </p>
-      <p>
-        *Test suites often test code, when they should test behaviour.*
-        Similarly, it is easy to fall into a trap with unit tests especially of
-        writing your tests to validate your code, rather than the behaviour the
-        user or downstream consumer is expecting. This is especially easy if you
-        forget that the "refactor" step of "Red-Green-Refactor" also applies to
-        the tests.
-      </p>
-      <p>
-        # Most testing can be automated, but often isn't. And by that I mean a
-        lazy developer (which we all should strive to be) with the right tools
-        should be writing fewer tests. Every program you write has a complex
-        type system regardless of the language you choose. The difference
-        between them is how much of that type checking is being done by the
-        compiler and how much of it falls on the developer. In a JavaScript
-        application, the onus is on the developer to ensure interfaces are being
-        adhered to. Switch to TypeScript instead and a whole suite of tests are
-        rendered redundant. If you look at languages with very rich type
-        systems, such as Haskell or Rust, they come with a near guarantee that
-        if the code compiles, it is going to work.
-      </p>
-      <p>
-        # Mutable code requires more tests. Languages like Haskell are able to
-        achieve these guarantees by enforcing certain principles. All state in
-        Haskell is immutable by default and all functions are pure, meaning
-        given the same input, the output is always the same. If a developer
-        wants to deal with side effects, they explicitly have to take
-        responsibility. This, coupled with the type system, means that not only
-        is the compiler already testing our code, we know where are test
-        boundaries should be by where we as developers have accepted
-        responsibility. We don't have the luxury of a strict compiler doing all
-        the work for us in JS land, but we can still enforce some of these same
-        principles outselves to reduce the surface area for regressions to creep
-        in. Obviously, we want to be lazy here and automate it away otherwise we
-        have to write tests, which is why libraries like immutable.js exist.
-      </p>
-      <p>
-        # The thing we care about testing the most is often the thing we test
-        the least When we are writing tests, we are often thinking from the
-        perspective of that unit or service and we spend all of our time testing
-        it in isolation. Dependency injection exists precisely for that purpose.
-        Is that what should be informing us that our application isn't working
-        as it should? Will unit tests tell us when a service stops communicating
-        a page doesn't load? Who here has some test coverage monitor that flags
-        PRs that don't hit a certain percentage, but at the same time has no
-        insight into the actual functioning of their application in production,
-        save for a few rudimentary Cloudwatch alerts in AWS?
-      </p>
-    </Notes>
-  </Slide>
+  <>
+    <Slide>
+      <Heading>So what's the problem?</Heading>
+      <Grid
+        gridTemplateColumns="50% 50%"
+        height="100%"
+      >
+        <FlexBox alignItems="center" justifyContent="center">
+          <UnorderedList>
+            <Appear>
+              <Appear>
+                <ListItem>
+                  Flakey tests → <br /> loss of confidence
+                </ListItem>
+              </Appear>
+              <ListItem>
+                Tests taking too long → <br /> cutting corners
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Overzealous coverage requirements → <br /> poor quality filler
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Badly named tests → <br /> confusion
+              </ListItem>
+            </Appear>
+          </UnorderedList>
+        </FlexBox>
+        <FlexBox alignItems="center" justifyContent="center">
+          <Image src={superhero} width="80%" style={{ objectFit: "cover" }} />
+        </FlexBox>
+      </Grid>
+      <Notes>
+        <p>
+          As "Superhero whose special power is confidence" demonstrates, tests are meant to give you confidence,  but those frustrations earlier show something is eroding that confidence.
+        </p>
+        <p><b>EXAMPLES</b></p>
+        <p>
+          So what can we do to improve confidence in our applications and improve the developer experience?
+        </p>
+      </Notes>
+    </Slide>
+    <Slide>
+      <Grid
+        gridTemplateColumns="50% 50%"
+        gridTemplateRows="50% 50%"
+        height="100%"
+      >
+        <FlexBox alignItems="center" justifyContent="center">
+          <Appear>
+            <Heading>Most testing can be automated, but often isn't</Heading>
+          </Appear>
+        </FlexBox>
+        <FlexBox alignItems="center" justifyContent="center">
+          <Appear>
+            <Heading color="white">Tests should be useful, and most are not</Heading>
+          </Appear>
+        </FlexBox>
+        <FlexBox alignItems="center" justifyContent="center">
+          <Appear>
+            <Heading color="white">Test behaviour, not implementation</Heading>
+          </Appear>
+        </FlexBox>
+        <FlexBox alignItems="center" justifyContent="center">
+          <Appear>
+            <Heading>Observability is more important than coverage</Heading>
+          </Appear>
+        </FlexBox>
+      </Grid>
+      <Notes>
+        So what are the problems, and how can we overcome them? 
+        <h3>Most testing can be automated, but often isn't</h3>
+        <p>
+          A lazy developer is a good developer, so don't write tests when you don't need to, and by that, I mean use the tools at your disposal to test for you. If you are a JavaScript developer and haven't moved to TypeScript, you are giving yourself extra work to do. In JavaScript, the onus is on you as the developer to ensure the validity of what is being passed to a function, whereas TypeScript passes that responsibility onto the transpiler.
+        </p>
+        <p>If you look at languages with very strict compilers, such as Haskell or Rust, they come with a near guarantee that
+          if the code compiles, it is going to work, due to a combination of rich type systems, and immutability by default. While we can't get to Haskell's confidence levels in JS land, we can do our bit to avoid writing tests, by using libraries such as immutable.js.
+        </p>
+        <h3>Tests should be useful, and most are not</h3>
+        <p>
+          TDD and unit tests are a fantastic way to write and develop code, but if your unit test mocks out all external dependencies (as unit tests tend to), they are not useful once your feature is complete. If the
+          interface of your unit changes, all of your unit tests need changing also, and if the mocked services change, you might end up with a test suite that doesn't reflect reality. We have a mindset drilled into us as software developers
+          that deleting tests is a "bad thing" but I'd argue that a significant
+          portion of product's CI pipeline is effectively dead code. Back to Michael C Feathers, who says "Code is inventory. It is stuff lying around and it has substantial cost of ownership.". Tests in your suite need maintaining just as much as the code does, and the less information to maintain, the better.
+        </p>
+        <h3>Test behaviour, not implementation</h3>
+        <p>
+          Similarly, it is easy to fall into a trap with unit tests especially of
+          writing your tests to only validate your code you are writing in the moment. However, it is easy to forget that the "refactor" step of "Red-Green-Refactor" in TDD also applies to the tests. The tests that form our pipeline, provide confidence, and promote maintainability are the ones that test the _behaviour_ of our application, not how the code is implemented. For those already using Kent Dodds' React Testing Library, I am preaching to the choir, and if you haven't started using it yet (there's also versions for inferior frameworks like Angular), it is a great example of a framework geared towards testing behaviour.
+        </p>
+        <h3>Observability is more important than coverage</h3>
+        <p>
+          A test suite can only tell us what we already know to look for and it doesn't matter how great your code coverage is if you have no way of identifying a bug that slips through the gap. Who here has some test coverage monitor blocks
+          PRs, but at the same time has little insight into the actual functioning of their application in production,
+          save for a few Cloudwatch alerts in AWS? What's more important to your users - that you stop regressions or that you can identify and triage when something has gone wrong?
+        </p>
+      </Notes>
+    </Slide>
+  </>
 );
 
 const Conclusion = () => (
   <Slide>
+    <Text>My top tips to improve confidence in your application (while doing less work):</Text>
+    <UnorderedList animateListItems>
+      <ListItem>Be lazy!</ListItem>
+      <ListItem>Don't be afraid to delete tests</ListItem>
+      <ListItem>Test behaviour, not implementation</ListItem>
+      <ListItem>Observability over code coverage</ListItem>
+    </UnorderedList>
     <Notes>
-      So I'm not really arguing that testing is a waste of time or that we
-      should go into work tomorrow and put our CI pipelines on a diet, but I am
-      suggesting that maybe we should be less dogmatic about how we think about
-      testing and test coverage.
-      <ul>
-        <li>Focus less on unit tests, and more on testing real behaviour.</li>
-        <li>Less on code coverage, and more on application observability.</li>
-        <li>And most importantly, be lazy and let the code test itself.</li>
-      </ul>
+      <p>
+        So, absolutely keep practicing TDD! Keep building test pipelines that allow for Continuous Integration and Delivery. But avoid the trap of thinking the more tests, the better, and above all, be as lazy as possible!
+      </p>
     </Notes>
   </Slide>
 );
@@ -274,15 +333,26 @@ const Thanks = () => (
   </Slide>
 );
 
+const Bonus = () => (
+  <Slide>
+    <FlexBox alignItems="center" justifyContent="center" maxHeight="90%">
+          <Image src={kingDino} height="100%" style={{ objectFit: "contain" }} />
+        </FlexBox>
+        <Notes>
+          And I'll leave you with my favourite thing a computer has done for me today - a picture titled "a stegasaurus on a throne wearing a mink robe posing for a 16th century portrait"
+        </Notes>
+  </Slide>
+)
+
 const Presentation = () => (
   <Deck theme={theme} template={template}>
     <TitlePage />
     <TestAnnoyances />
-    <WhyTest />
     <TestsAreImportant />
     <HowToThink />
     <Conclusion />
     <Thanks />
+    <Bonus />
   </Deck>
 );
 
