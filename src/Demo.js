@@ -1,3 +1,26 @@
+import {
+  FlexBox,
+  Heading,
+  UnorderedList,
+  ListItem,
+  FullScreen,
+  AnimatedProgress,
+  Appear,
+  Slide,
+  Deck,
+  Text,
+  Box,
+  Notes,
+  Link,
+  Image,
+  CodePane, MarkdownSlide,
+  Grid,
+  SlideLayout,
+  CodeSpan,
+  OrderedList,
+  MarkdownSlideSet
+} from "spectacle";
+
 const SlideFragments = () => (
   <>
     <Slide>
@@ -15,9 +38,9 @@ const SlideFragments = () => (
   </>
 );
 
-const demo = () => (
-  <Deck>
-    <Slide>
+const Demo = () => (
+  <>
+  <Slide>
       <FlexBox height="100%" flexDirection="column">
         <Heading margin="0px" fontSize="150px">
           ✨<i>Spectacle</i> ✨
@@ -165,5 +188,7 @@ const demo = () => (
       items={["Two-column", "Lists", "And more!"]}
       animateListItems
     />
-  </Deck>
+    </>
 );
+
+export default Demo;
