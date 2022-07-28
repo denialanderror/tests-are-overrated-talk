@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Spectacle](https://formidable.com/open-source/spectacle/).
 
+The talk is hosted on GitHub Pages [here](https://denialanderror.github.io/tests-are-overrated-talk).
+
 ## To run
 
 ### `yarn start`

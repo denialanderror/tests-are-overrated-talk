@@ -2,16 +2,20 @@
   "name": "tests-are-overrated-talk",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://denialanderror.github.io/tests-are-overrated-talk",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
-    "spectacle": "^9.2.1"
+    "spectacle": "^9.2.1",
+    "gh-pages": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+   "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
